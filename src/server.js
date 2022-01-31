@@ -85,7 +85,7 @@ let io=socketIO(server);
                 })
                 socket.broadcast.to(params.room).emit('newMessage',{
                     from: "Admin",
-                    text: "A new user has joined",
+                    text: "The other user has joined",
                     createdAt: new Date().toLocaleTimeString()+" "+new Date().toLocaleDateString()
                 })
                 callback();
@@ -176,7 +176,7 @@ let io=socketIO(server);
                 io.to(user.room).emit('updateUsersList',users.getUserList(user.room));
                 io.to(user.room).emit('newMessage',{
                     from: "Admin",
-                    text: `${user.name} has left the chat room ${user.room}`,
+                    text: `${user.name} has become offline`,
                     createdAt: new Date().toLocaleTimeString()+" "+new Date().toLocaleDateString()
                 })
             }
