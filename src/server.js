@@ -13,8 +13,8 @@ let server=http.createServer(app);
 const mongoose=require('mongoose');
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
-const MONGODB_URI='mongodb+srv://adminuser:useradmin@charitydb.fivwx.mongodb.net/InstaChatApp?retryWrites=true&w=majority'
-mongoose.connect(process.env.MONGODB_URI||MONGODB_URI,{
+
+mongoose.connect(process.env.MONGODB_URI,{
     useNewUrlParser:true,
     useUnifiedTopology:true
 }).then(()=>console.log("Connection successful")).catch((err)=>{
