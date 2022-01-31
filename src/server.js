@@ -41,9 +41,7 @@ function isValid(str){
 }
 app.get("/room",async (req,res)=>{
     const room=req.query.room;
-    res.render("room",{
-        room:room
-    })
+    res.render("room")
 })
 let io=socketIO(server);
     io.on('connection',(socket)=>{
@@ -84,11 +82,6 @@ let io=socketIO(server);
                             })
                         }
                     }
-                })
-                socket.emit('newMessage',{
-                    from: "Admin",
-                    text: "Welcome to chat room",
-                    createdAt: new Date().toLocaleTimeString()+" "+new Date().toLocaleDateString()
                 })
                 socket.broadcast.to(params.room).emit('newMessage',{
                     from: "Admin",
